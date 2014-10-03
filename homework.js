@@ -1110,24 +1110,25 @@ var items = [{
 
 /* Answer for Question #1*/
 
-var itemPrices = items.map(function(item){
+var itemPrices = items.map(function (item){
   return item.price;
 });
-var totalledPrices=itemPrices.reduce(function(sum, price) {return sum + price}, 0);
+var totalledPrices = itemPrices.reduce(function (sum, price) {return sum + price}, 0);
 totalledPrices;
-var averagePrice=totalledPrices / items.length;
-  console.log ("The average price is $"  + averagePrice + ".")
+var averagePrice = totalledPrices / items.length;
+  console.log ("The average price is $"  + Math.round(averagePrice) + ".")
 
 /* Answer for Question #2*/
 
-var itemPrices = items.map(function(item){
+var itemPrices = items.map(function (item){
   return item.price;
 });
 
-var filteredPrices = items.filter(function(item) {
-  return (item.price >= 14 && item.price <= 18)
+var filteredPrices = items.filter(function (item) {
+  return (item.price > 14 && item.price < 18);
 });
 filteredPrices;
+  console.log ("Items that cost between $14.00 USD and $18.00 USD: " , filteredPrices)
 
 /* Answer for Question #3*/
 
