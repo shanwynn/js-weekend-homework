@@ -1132,8 +1132,29 @@ filteredPrices;
 
 /* Answer for Question #3*/
 
+var britishItem = items.filter(function (item) {
+  return (item.currency_code === "GBP");
+});
+var britishTitle = britishItem.map(function (britishItem) {
+  return (britishItem.title);
+});
+var britishPrice = britishItem.map(function (britishItem) {
+  return (britishItem.price);
+});
+britishTitle;
+britishItem;
+britishPrice;
+  console.log (britishTitle + " costs £" + britishPrice)
 
 /* Answer for Question #4*/
+
+var woodItems = items.filter(function (item) {
+  var itemMaterials = item.materials.filter(function(material) {
+      return (material === "wood");
+    });
+    return itemMaterials.length > 0;
+});
+console.log (woodItems , " is made of wood.")
 
 
 /* Answer for Question #5*/
