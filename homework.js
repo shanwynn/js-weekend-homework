@@ -1154,7 +1154,14 @@ var woodItems = items.filter(function (item) {
     });
     return itemMaterials.length > 0;
 });
-console.log (woodItems , " is made of wood.")
+var woodItemArray = woodItems.map(function (woodItems) {
+  return (woodItems.title);
+});
+console.log (woodItemArray[0] + " is made of wood.")
+console.log (woodItemArray[1] + " is made of wood.")
+console.log (woodItemArray[2] + " is made of wood.")
+console.log (woodItemArray[3] + " is made of wood.")
+console.log (woodItemArray[4] + " is made of wood.")
 
 
 /* Answer for Question #5*/
