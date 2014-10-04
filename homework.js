@@ -1116,7 +1116,8 @@ var itemPrices = items.map(function (item){
 var totalledPrices = itemPrices.reduce(function (sum, price) {return sum + price}, 0);
 totalledPrices;
 var averagePrice = totalledPrices / items.length;
-  console.log ("The average price is $"  + Math.round(averagePrice) + ".")
+var averageRounded = averagePrice.toFixed(2);
+  console.log ("The average price is $"  + averageRounded + ".")
 
 /* Answer for Question #2*/
 
@@ -1144,7 +1145,7 @@ var britishPrice = britishItem.map(function (britishItem) {
 britishTitle;
 britishItem;
 britishPrice;
-  console.log (britishTitle + " costs £" + britishPrice)
+  console.log (britishTitle + " costs £" + britishPrice + ".")
 
 /* Answer for Question #4*/
 
@@ -1166,5 +1167,18 @@ console.log (woodItemArray[4] + " is made of wood.")
 
 /* Answer for Question #5*/
 
+var manyMaterialItems = items.filter(function (item) {
+    return (item.material > 8);
+  });
+  manyMaterialItems;
+
+console.log (manyMaterialItems + " has " + "" + "items.")
 
 /* Answer for Question #6*/
+
+whoMadeItems = items.filter(function (item) {
+  return (item.who_made === "i_did");
+});
+whoMadeItems;
+
+console.log (whoMadeItems.length + " were made by their sellers.")
