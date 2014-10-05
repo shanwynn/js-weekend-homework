@@ -59,5 +59,5 @@ if (baconOrNot === "Y") {
     gameOverFont("Half a day of class work lost, we lose.");
   }
 
-allDecisions.forEach(function(answer) { console.log("These were the decisions made " + answer);
+allDecisions.forEach(function(answer) { console.log("This decision was made " + answer);
 });
