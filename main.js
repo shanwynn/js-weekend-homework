@@ -41,6 +41,7 @@ allDecisions.push(publixOrRestaurant);
 if (publixOrRestaurant === "Publix") {
     console.log("Oh no, someone is caught stealing at Publix. The police arrive and we are mistakenly carted off to jail.");
     gameOverFont("Game Over");
+    prompt("GAME OVER");
 } else {
   moodFont("Things start looking shady as we get past Central.");
     console.log("I see a sign for a new bacon restaurant. It points down a dark alley, should we try it anyway?");
@@ -58,5 +59,5 @@ if (baconOrNot === "Y") {
     gameOverFont("Half a day of class work lost, we lose.");
   }
 
-allDecisions.forEach(function(answer) { console.log("These were the decisions made " + answer); 
+allDecisions.forEach(function(answer) { console.log("These were the decisions made " + answer);
 });
