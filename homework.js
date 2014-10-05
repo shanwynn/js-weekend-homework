@@ -1168,11 +1168,10 @@ console.log (woodItemArray[4] + " is made of wood.")
 /* Answer for Question #5*/
 
 var manyMaterialItems = items.filter(function (item) {
-    return (item.material > 8);
+    return (item.materials.length > 8);
   });
-  manyMaterialItems;
-
-console.log (manyMaterialItems + " has " + "" + "items.")
+console.log (manyMaterialItems)
+manyMaterialItems.forEach(function(item) { console.log(item.materials) });
 
 /* Answer for Question #6*/
 
