@@ -1173,8 +1173,10 @@ var manyMaterialItems = items.filter(function (item) {
   var manyMaterialTitle = manyMaterialItems.map(function (manyMaterialItems) {
     return (manyMaterialItems.title);
   });
+
 console.log (manyMaterialItems)
 manyMaterialItems.forEach(function(item) { console.log(item.materials) });
+
 
 /* Answer for Question #6*/
 
