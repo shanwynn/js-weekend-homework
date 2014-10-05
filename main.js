@@ -1,98 +1,62 @@
-/* I print to the console and I'm much easier to type than console.log,
-    if you add css to me I'll format your message that way.
-
-    p('I can not believe that you said that');
-
-    or
-
-    p('I am yelling so loud right now!', 'color: red; font-size: 40px;');
-
-    */
-function p (text, css) {
+function defaultFont (text, css) {
   console.log("%c" + text, "font-size: 14px; " + css);
 }
 
-/* I also print to the console, but I come prestyled. This is great for
-     writing ambient text about what is going on in the story.
-
-    info('You are standing in a dark hallway. Haunted by object literals and arrays.');
-
-    */
-function info (text) {
-  console.log("%c---" + text + "---", "color: gray; font-size: 15px;");
+function moodFont (text, css) {
+  console.log("%c<--" + text + "-->", "color: #083452; font-size: 16px;");
 }
 
-/* I don't do anything other than wrap the function 'prompt' in the name ask. Ask is much
-    nicer than prompt
-
-    var yourAnswer = ask('What is your answer?', 'none');
-    */
-function ask (question, defaultAnswer) {
-  return prompt(question, defaultAnswer);
+function gameOverFont (text, css) {
+  console.log("%c<--" + text + "-->", "color: red; font-size: 20px;");
 }
 
+function story (question, answer) {
+  return prompt(question, answer);
+}
 
-/*
+function storyPrompt (question, answer) {
+  return prompt(question, answer);
+}
 
-  THIS IS WHERE THE STORY BEGINS
+var allDecisions = [];
+console.log("And so our adventure begins. It's lunchtime on a seemingly sunny day in St. Pete.");
 
-  this is not the most elegant way of doing a choose your own adventure.
-  The prompt will come up first when you start and you'll need to click through
-  them to open the console log to start reading the text.
+var lunchAdventure = prompt("Are you ready to venture out for lunch?", "Yes, I'm starving!");
+allDecisions.push(lunchAdventure);
 
-  This will not be the prettiest code ever. :()
-*/
+console.log("You said " + lunchAdventure + " Cool, let's do this!");
+var umbrella = prompt("Should we take an umbrella? (Y)es or (N)o", "Y or N");
 
-var allTheAnswers = [];
-console.log('How to build a text adventure with console.log() and prompt()');
+if (umbrella === "Y") {
+    console.log("It remains sunny outside, hope we don't lose the umbrella");
 
-var continueResponse = prompt('Do you want to continue?', 'of course!');
-allTheAnswers.push(continueResponse);
-
-console.log('You said "' + continueResponse + '". Do you really feel that way?');
-
-var upOrDown = prompt("Do you want to go (UP)stairs or (DOWN)stairs?", "DOWN");
-allTheAnswers.push(upOrDown);
-
-if (upOrDown === "UP") {
-    console.log("Going up!");
-    usingHelpers();
 } else {
-    console.log("Going down!");
-    usingHelpers();
+  moodFont("It's starting to look cloudy, as we head down the street.");
+    console.log("It's starting to rain, we should make a decision, fast.");
 }
 
-info('Its important to always set the mood in an interactive story');
-info('It was a dark and stormy night... when the loops began.');
+var publixOrRestaurant = prompt("Do you want to run to Publix or go to a restaurant?", "Publix or Restaurant");
+allDecisions.push(publixOrRestaurant);
 
-p('The key is this', 'font-size: 50px;');
-p('Present some options and then ask the question');
-var answer = ask('Easy, right?', 'yes');
-allTheAnswers.push(answer);
+if (publixOrRestaurant === "Publix") {
+    console.log("Oh no, someone is caught stealing at Publix. The police arrive and we are mistakenly carted off to jail.");
+    gameOverFont("Game Over");
+} else {
+  moodFont("Things start looking shady as we get past Central.");
+    console.log("I see a sign for a new bacon restaurant. It points down a dark alley, should we try it anyway?");
+}
 
-p('Then store the answer. For instance, you just told me ' + 'answer');
-p('Using .push() add the answer to your array for keeping track of answers');
+var baconOrNot = prompt("Try the new bacon place? (Y)es or (N)o");
+allDecisions.push(baconOrNot);
 
-
-
-function usingHelpers() {
-  console.log("Now I'm going to start using my console.log 'helper method'");
-  console.log("A helper method is a small method that wraps up a bit of functionality. Making it easier to use repeatedly or more readable.");
-
-  var doesMakeSense = ask('Does that make sense?', 'Yep');
-  allTheAnswers.push(doesMakeSense);
-
-  switch (doesMakeSense ){
-      case "Yep":
-        p("Okay, I'm glad that makes sense.");
-        break;
-      case "No":
-        p("No? Well, ask me about it more tomorrow.");
-        break;
-      default:
-        p("I'm going to have to take that as a maybe...");
+if (baconOrNot === "Y") {
+    moodFont("We wind our way past the homeless nappers and the shady dude to make our way to the door of the Bacon Barn.");
+    console.log("The Bacon barn ends up being a great, cheap lunch option.");
+    gameOverFont("We win!");
+} else {
+    console.log("We end up eating fast food, that gives us a stomach ache.");
+    gameOverFont("Half a day of class work lost, we lose.");
   }
 
-}
-
-allTheAnswers.forEach(function(answer) { console.log(answer); });
+allDecisions.forEach(function(answer) { console.log("These were the decisions made " + answer); 
+});
