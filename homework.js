@@ -1110,22 +1110,21 @@ var items = [{
 
 /* Answer for Question #1*/
 
-var itemPrices = items.map(function (item){
+var itemPrices = _.map(items, function (item){
   return item.price;
 });
-var totalledPrices = itemPrices.reduce(function (sum, price) {return sum + price}, 0);
-totalledPrices;
+var totalledPrices = _.reduce(itemPrices, function (sum, price) {return sum + price}, 0);
 var averagePrice = totalledPrices / items.length;
 var averageRounded = averagePrice.toFixed(2);
   console.log ("The average price is $"  + averageRounded + ".")
 
 /* Answer for Question #2*/
 
-var itemPrices = items.map(function (item){
+var itemPrices = _.map(items, function (item){
   return item.price;
 });
 
-var filteredPrices = items.filter(function (item) {
+var filteredPrices = _.filter(items ,function (item) {
   return (item.price > 14 && item.price < 18);
 });
 filteredPrices;
@@ -1133,54 +1132,52 @@ filteredPrices;
 
 /* Answer for Question #3*/
 
-var britishItem = items.filter(function (item) {
+var britishItem = _.filter(items, function (item) {
   return (item.currency_code === "GBP");
 });
-var britishTitle = britishItem.map(function (britishItem) {
+var britishTitle = _.map(britishItem, function (britishItem) {
   return (britishItem.title);
 });
-var britishPrice = britishItem.map(function (britishItem) {
+var britishPrice = _.map(britishItem, function (britishItem) {
   return (britishItem.price);
 });
-britishTitle;
-britishItem;
-britishPrice;
   console.log (britishTitle + " costs £" + britishPrice + ".")
 
 /* Answer for Question #4*/
 
-var woodItems = items.filter(function (item) {
-  var itemMaterials = item.materials.filter(function(material) {
+var woodItems = _.filter(items, function (item) {
+  var itemMaterials = _.filter(item.materials ,function(material) {
       return (material === "wood");
     });
     return itemMaterials.length > 0;
 });
-var woodItemArray = woodItems.map(function (woodItems) {
-  return (woodItems.title);
+var woodItemArray = _.map(woodItems, function (woodItems) {
+  return woodItems.title;
 });
-console.log (woodItemArray[0] + " is made of wood.")
-console.log (woodItemArray[1] + " is made of wood.")
-console.log (woodItemArray[2] + " is made of wood.")
-console.log (woodItemArray[3] + " is made of wood.")
-console.log (woodItemArray[4] + " is made of wood.")
-
+_.each(woodItemArray, function(item) {
+  console.log(item + " is made of wood.");
+});
 
 /* Answer for Question #5*/
 
-var manyMaterialItems = items.filter(function (item) {
+var manyMaterialItems = _.filter(items, function (item) {
     return (item.materials.length > 8);
-  });
-  var manyMaterialTitle = manyMaterialItems.map(function (manyMaterialItems) {
+});
+var manyMaterialTitle = _.map(manyMaterialItems, function (manyMaterialItems) {
     return (manyMaterialItems.title);
   });
 
 console.log (manyMaterialItems)
-manyMaterialItems.forEach(function(item) { console.log(item.materials) });
-
+_.each(manyMaterialItems, function(item) {
+  console.log(item.title);
+  _.each(item.materials, function(mat) {
+    console.log(mat);
+  });
+});
 
 /* Answer for Question #6*/
 
-whoMadeItems = items.filter(function (item) {
+whoMadeItems = _.filter(items, function (item) {
   return (item.who_made === "i_did");
 });
 whoMadeItems;
