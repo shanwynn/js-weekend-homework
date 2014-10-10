@@ -1112,22 +1112,24 @@ var items = [{
 
 var itemPrices = _.map(items, function (item){
   return item.price;
-});
+}); // This seems like a good place to use underscore's _.pluck() method.
+
+
 var totalledPrices = _.reduce(itemPrices, function (sum, price) {return sum + price}, 0);
 var averagePrice = totalledPrices / items.length;
 var averageRounded = averagePrice.toFixed(2);
-  console.log ("The average price is $"  + averageRounded + ".")
+  console.log ("The average price is $"  + averageRounded + ".") // Console log shouldn't be indented.
 
 /* Answer for Question #2*/
 
 var itemPrices = _.map(items, function (item){
   return item.price;
-});
+}); // Another good canidate for pluck
 
 var filteredPrices = _.filter(items ,function (item) {
   return (item.price > 14 && item.price < 18);
 });
-filteredPrices;
+filteredPrices; // Remember to delete these debug lines before committing. 
   console.log ("Items that cost between $14.00 USD and $18.00 USD: " , filteredPrices)
 
 /* Answer for Question #3*/
@@ -1136,7 +1138,7 @@ var britishItem = _.filter(items, function (item) {
   return (item.currency_code === "GBP");
 });
 var britishTitle = _.map(britishItem, function (britishItem) {
-  return (britishItem.title);
+  return (britishItem.title); //These wrapping parens are not needed.
 });
 var britishPrice = _.map(britishItem, function (britishItem) {
   return (britishItem.price);
@@ -1147,13 +1149,15 @@ var britishPrice = _.map(britishItem, function (britishItem) {
 
 var woodItems = _.filter(items, function (item) {
   var itemMaterials = _.filter(item.materials ,function(material) {
-      return (material === "wood");
+      return (material === "wood"); // This function can be made much simpler with the use of underscore's .contain method. http://underscorejs.org/#contains
     });
     return itemMaterials.length > 0;
 });
-var woodItemArray = _.map(woodItems, function (woodItems) {
+
+var woodItemArray = _.map(woodItems, function (woodItems) { //ANother good use for pluck
   return woodItems.title;
 });
+
 _.each(woodItemArray, function(item) {
   console.log(item + " is made of wood.");
 });
@@ -1178,8 +1182,8 @@ _.each(manyMaterialItems, function(item) {
 /* Answer for Question #6*/
 
 whoMadeItems = _.filter(items, function (item) {
-  return (item.who_made === "i_did");
+  return (item.who_made === "i_did"); // () are not needed
 });
-whoMadeItems;
+whoMadeItems; // Please delete me.
 
 console.log (whoMadeItems.length + " were made by their sellers.")
