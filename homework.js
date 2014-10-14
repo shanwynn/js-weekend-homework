@@ -1116,7 +1116,7 @@ var itemPrices = _.map(items, function (item){
 var totalledPrices = _.reduce(itemPrices, function (sum, price) {return sum + price}, 0);
 var averagePrice = totalledPrices / items.length;
 var averageRounded = averagePrice.toFixed(2);
-  console.log ("The average price is $"  + averageRounded + ".")
+console.log ("The average price is $"  + averageRounded + ".")
 
 /* Answer for Question #2*/
 
@@ -1125,29 +1125,28 @@ var itemPrices = _.map(items, function (item){
 });
 
 var filteredPrices = _.filter(items ,function (item) {
-  return (item.price > 14 && item.price < 18);
+  return item.price > 14 && item.price < 18;
 });
-filteredPrices;
-  console.log ("Items that cost between $14.00 USD and $18.00 USD: " , filteredPrices)
+console.log ("Items that cost between $14.00 USD and $18.00 USD: " , filteredPrices)
 
 /* Answer for Question #3*/
 
 var britishItem = _.filter(items, function (item) {
-  return (item.currency_code === "GBP");
+  return item.currency_code === "GBP";
 });
 var britishTitle = _.map(britishItem, function (britishItem) {
-  return (britishItem.title);
+  return britishItem.title;
 });
 var britishPrice = _.map(britishItem, function (britishItem) {
-  return (britishItem.price);
+  return britishItem.price;
 });
-  console.log (britishTitle + " costs £" + britishPrice + ".")
+console.log (britishTitle + " costs £" + britishPrice + ".")
 
 /* Answer for Question #4*/
 
 var woodItems = _.filter(items, function (item) {
   var itemMaterials = _.filter(item.materials ,function(material) {
-      return (material === "wood");
+      return material === "wood";
     });
     return itemMaterials.length > 0;
 });
@@ -1155,16 +1154,16 @@ var woodItemArray = _.map(woodItems, function (woodItems) {
   return woodItems.title;
 });
 _.each(woodItemArray, function(item) {
-  console.log(item + " is made of wood.");
+console.log(item + " is made of wood.");
 });
 
 /* Answer for Question #5*/
 
 var manyMaterialItems = _.filter(items, function (item) {
-    return (item.materials.length > 8);
+    return item.materials.length > 8;
 });
 var manyMaterialTitle = _.map(manyMaterialItems, function (manyMaterialItems) {
-    return (manyMaterialItems.title);
+    return manyMaterialItems.title;
   });
 
 console.log (manyMaterialItems)
@@ -1178,8 +1177,6 @@ _.each(manyMaterialItems, function(item) {
 /* Answer for Question #6*/
 
 whoMadeItems = _.filter(items, function (item) {
-  return (item.who_made === "i_did");
+  return item.who_made === "i_did";
 });
-whoMadeItems;
-
 console.log (whoMadeItems.length + " were made by their sellers.")
