@@ -1110,9 +1110,7 @@ var items = [{
 
 /* Answer for Question #1*/
 
-var itemPrices = _.map(items, function (item){
-  return item.price;
-});
+itemPrices = _.pluck(items, "price");
 var totalledPrices = _.reduce(itemPrices, function (sum, price) {return sum + price}, 0);
 var averagePrice = totalledPrices / items.length;
 var averageRounded = averagePrice.toFixed(2);
@@ -1120,10 +1118,7 @@ console.log ("The average price is $"  + averageRounded + ".")
 
 /* Answer for Question #2*/
 
-var itemPrices = _.map(items, function (item){
-  return item.price;
-});
-
+var itemPrices = _.pluck(items, "price");
 var filteredPrices = _.filter(items ,function (item) {
   return item.price > 14 && item.price < 18;
 });
@@ -1145,14 +1140,9 @@ console.log (britishTitle + " costs £" + britishPrice + ".")
 /* Answer for Question #4*/
 
 var woodItems = _.filter(items, function (item) {
-  var itemMaterials = _.filter(item.materials ,function(material) {
-      return material === "wood";
-    });
-    return itemMaterials.length > 0;
+  return _.contains(item.materials ,"wood");
 });
-var woodItemArray = _.map(woodItems, function (woodItems) {
-  return woodItems.title;
-});
+var woodItemArray = _.pluck(woodItems, "title");
 _.each(woodItemArray, function(item) {
 console.log(item + " is made of wood.");
 });
